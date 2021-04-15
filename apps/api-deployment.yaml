@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: api
-          image: vm/backend:latest
-          imagePullPolicy: IfNotPresent
+          image: docker-registry.default.svc:5000/vmanage/backend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8088
               name: http

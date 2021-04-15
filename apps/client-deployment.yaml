@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: vm/frontend:latest
+          image: docker-registry.default.svc:5000/vmanage/frontend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
