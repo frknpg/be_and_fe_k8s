@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: vmanage
+  labels:
+    app.kubernetes.io/name: vmanage
+    app.kubernetes.io/instance: vmanage
