@@ -16,7 +16,7 @@ spec:
       containers:
         - name: client
           image: docker-registry.default.svc:5000/vmanage/frontend:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
               name: http
