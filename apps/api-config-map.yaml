@@ -1,10 +1,17 @@
+kind: ConfigMap 
 apiVersion: v1
-kind: ConfigMap
 metadata:
   name: api-config-map
 data:
-  DB_CONNECTION: pg
-  DB_HOST: postgres-cluster-ip-service
-  DB_PORT: '5432'
-  DB_USER: postgres
-  DB_DATABASE: notesdb
+  application.yml: |-
+    elastic:
+      url: http://10.254.186.59:9200/test
+      kibana_url: http://10.254.186.59:5601
+      prefix: vmanage
+
+    custom:
+      database:
+        class-name: org.postgresql.Driver
+        url: jdbc:postgresql://10.254.186.59:5432/vmanage
+        username: postgres
+        password: Admin123!

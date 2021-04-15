@@ -20,13 +20,3 @@ spec:
             - containerPort: 8088
               name: http
               protocol: TCP
-          envFrom:
-            - configMapRef:
-                name: api-config-map
-          env:
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: database-secret
-                  key: password
-          
