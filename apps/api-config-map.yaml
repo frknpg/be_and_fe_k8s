@@ -16,3 +16,11 @@ data:
         url: jdbc:postgresql://10.254.186.59:5432/vmanage
         username: postgres
         password: Admin123!
+    
+    vmanage:
+      upload-path: attachment-storage
+      minio-name: minioadmin
+      minio-secret: Admin123!
+      minio-url: http://10.254.186.59:9000/
+      cubejs-url: http://10.254.186.59:4000
+      temp-jira-hook-path:
