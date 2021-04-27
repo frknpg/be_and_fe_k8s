@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: vmanage
+  name: visiumpoc
   labels:
-    app.kubernetes.io/name: vmanage
-    app.kubernetes.io/instance: vmanage
+    app.kubernetes.io/name: visiumpoc
+    app.kubernetes.io/instance: visiumpoc

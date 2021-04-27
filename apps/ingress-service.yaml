@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ingress-service
-  namespace: default
   annotations:
     # use the shared ingress-nginx
     kubernetes.io/ingress.class: "nginx"
