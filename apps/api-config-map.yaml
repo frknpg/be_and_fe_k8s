@@ -1,4 +1,4 @@
-kind: ConfigMap 
+kind: ConfigMap
 apiVersion: v1
 metadata:
   name: api-config-map
@@ -18,3 +18,7 @@ data:
     vmanage:
       bucket: attachment-storage
       s3-endpoint: http://10.254.186.59:9000/
+
+    server:
+      ssl:
+        enabled: false
