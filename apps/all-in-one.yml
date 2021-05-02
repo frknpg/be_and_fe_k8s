@@ -21,6 +21,13 @@ spec:
             - containerPort: 8088
               name: http
               protocol: TCP
+          resources:
+            requests:
+              memory: "400Mi"
+              cpu: "128m"
+            limits:
+              memory: "1Gi"
+              cpu: "2"
           envFrom:
             - configMapRef:
                 name: api-env-config
@@ -102,6 +109,13 @@ spec:
             - containerPort: 8080
               name: http
               protocol: TCP
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "128m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
 
 ---
 apiVersion: v1
