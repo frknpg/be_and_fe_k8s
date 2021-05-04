@@ -14,12 +14,22 @@ spec:
     spec:
       containers:
         - name: api
-          image: docker-registry.default.svc:5000/vmanage/backend:latest
+          image: visiumpoc/backendpoc:0.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 8088
               name: http
               protocol: TCP
+          resources:
+            requests:
+              memory: "400Mi"
+              cpu: "128m"
+            limits:
+              memory: "1Gi"
+              cpu: "2"
+          envFrom:
+            - configMapRef:
+                name: api-env-config
           env:
             - name: CUSTOM_DATABASE_PASSWORD
               valueFrom:
@@ -36,3 +46,17 @@ spec:
                 secretKeyRef:
                   name: vmanage-secret
                   key: secretAccessKey
+          command: ['/bin/bash']
+          args: ["-c", "java -XX:+UnlockExperimentalVMOptions -Xmx700m -XX:+UseContainerSupport -Djavax.net.ssl.trustStore=/home/trustStore -Djavax.net.ssl.trustStorePassword=changeit -Djava.security.egd=file:/dev/./urandom -jar /app/spring-boot-application.jar"]
+          # lifecycle:
+          #   postStart:
+          #     exec:
+          #       command: ["/bin/sh", "-c", "keytool -import -noprompt -alias uat -file /home/uat.cer -cacerts -storepass changeit"]
+          volumeMounts:
+            - name: java-truststore
+              mountPath: "/home"
+              readOnly: true
+      volumes:
+        - name: java-truststore
+          secret:
+            secretName: trusted-store
