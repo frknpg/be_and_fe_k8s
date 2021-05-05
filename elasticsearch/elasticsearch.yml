@@ -47,6 +47,6 @@ spec:
             items:
               - key: elasticsearch.yaml
                 path: elasticsearch.yaml
-        - name: postgres-storage
+        - name: storage
           persistentVolumeClaim:
             claimName: elasticsearch-pvc
