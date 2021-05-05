@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: es-data
+  labels:
+    component: elasticsearch
+    role: single-node
+spec:
+  selector:
+    matchLabels:
+      component: elasticsearch
+      role: single-node
+  serviceName: elasticsearch-single-node
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: elasticsearch
+        role: single-node
+    spec:
+      # initContainers:
+      # - name: init-sysctl
+      #   image: busybox:1.27.2
+      #   command:
+      #   - sysctl
+      #   - -w
+      #   - vm.max_map_count=262144
+      #   securityContext:
+      #     privileged: true
+      containers:
+      - image: docker.elastic.co/elasticsearch/elasticsearch:7.12.1
+        name: elasticsearch
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9200
+          protocol: TCP
+        volumeMounts:
+        - name: storage
+          mountPath: /data
+        - name: elasticsearch-config
+          mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+          subPath: elasticsearch.yml
+      volumes:
+        - name: elasticsearch-config
+          configMap:
+            name: es-config
+            items:
+              - key: elasticsearch.yml
+                path: elasticsearch.yml
+  volumeClaimTemplates:
+  - metadata:
+      name: storage
+    spec:
+      storageClassName: manual
+      accessModes: [ ReadWriteOnce ]
+      resources:
+        requests:
+          storage: 15Gi
