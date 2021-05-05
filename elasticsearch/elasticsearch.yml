@@ -38,15 +38,15 @@ spec:
         - name: storage
           mountPath: /data
         - name: elasticsearch-config
-          mountPath: /usr/share/elasticsearch/config/elasticsearch.yaml
-          subPath: elasticsearch.yaml
+          mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+          subPath: elasticsearch.yml
       volumes:
         - name: elasticsearch-config
           configMap:
             name: es-config
             items:
-              - key: elasticsearch.yaml
-                path: elasticsearch.yaml
+              - key: elasticsearch.yml
+                path: elasticsearch.yml
         - name: storage
           persistentVolumeClaim:
             claimName: elasticsearch-pvc

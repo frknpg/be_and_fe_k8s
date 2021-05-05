@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: es-config
 data:
-  elasticsearch.yaml: |
+  elasticsearch.yml: |
     discovery.type: single-node
