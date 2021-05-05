@@ -47,12 +47,6 @@ spec:
             items:
               - key: elasticsearch.yaml
                 path: elasticsearch.yaml
-  volumeClaimTemplates:
-  - metadata:
-      name: storage
-    spec:
-      storageClassName: manual
-      accessModes: [ ReadWriteOnce ]
-      resources:
-        requests:
-          storage: 15Gi
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: elasticsearch-pvc
