@@ -8,3 +8,5 @@ data:
   CUSTOM_DATABASE_USERNAME: postgres
   VMANAGE_BUCKET: attachment-storage
   VMANAGE_S3_ENDPOINT: http://10.254.186.59:9000/
+  ELASTIC_URL: http://elasticsearch:9200
+  ELASTIC_KIBANA_URL: http://kibana:5601
