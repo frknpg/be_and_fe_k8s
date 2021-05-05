@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: es-data
+  name: elasticsearch
   labels:
     component: elasticsearch
     role: single-node
@@ -38,15 +38,15 @@ spec:
         - name: storage
           mountPath: /data
         - name: elasticsearch-config
-          mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
-          subPath: elasticsearch.yml
+          mountPath: /usr/share/elasticsearch/config/elasticsearch.yaml
+          subPath: elasticsearch.yaml
       volumes:
         - name: elasticsearch-config
           configMap:
             name: es-config
             items:
-              - key: elasticsearch.yml
-                path: elasticsearch.yml
+              - key: elasticsearch.yaml
+                path: elasticsearch.yaml
   volumeClaimTemplates:
   - metadata:
       name: storage
