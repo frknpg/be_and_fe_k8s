@@ -74,8 +74,8 @@ data:
   CUSTOM_DATABASE_USERNAME: sa
   VMANAGE_BUCKET: attachment-storage
   VMANAGE_S3_ENDPOINT: https://10.254.186.59:9001/
-  ELASTIC_URL: http://elasticsearch:9200
-  ELASTIC_KIBANA_URL: http://kibana:5601
+  ELASTIC_URL: http://elasticsearch.app.visiumshift
+  ELASTIC_KIBANA_URL: http://kibana.app.visiumshift
 
 ---
 apiVersion: v1
