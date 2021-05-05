@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: visiumpoc/backendpoc:0.0.1
+          image: 172.30.209.40:5000/visiumpoc/backendpoc:0.0.2
           imagePullPolicy: Always
           ports:
             - containerPort: 8088
@@ -70,8 +70,8 @@ metadata:
   name: api-env-config
 data:
   SPRING_PROFILES_ACTIVE: prod
-  CUSTOM_DATABASE_URL: jdbc:postgresql://10.254.186.59:5432/vmanage
-  CUSTOM_DATABASE_USERNAME: postgres
+  CUSTOM_DATABASE_URL: jdbc:sqlserver://10.254.186.52:1433;databaseName=vmanage;currentSchema=vis
+  CUSTOM_DATABASE_USERNAME: sa
   VMANAGE_BUCKET: attachment-storage
   VMANAGE_S3_ENDPOINT: https://10.254.186.59:9001/
 
@@ -119,7 +119,7 @@ spec:
       containers:
         - name: client
           image: visiumpoc/frontendpoc:0.0.2
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
               name: http
