@@ -5,3 +5,4 @@ metadata:
 data:
   elasticsearch.yml: |
     discovery.type: single-node
+    network.bind_host: 0.0.0.0
