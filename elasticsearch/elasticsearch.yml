@@ -34,6 +34,18 @@ spec:
         ports:
         - containerPort: 9200
           protocol: TCP
+        env:  
+        - name: ES_JAVA_OPTS
+          value: -Xms256m -Xmx256m
+        - name: PROCESSORS
+          valueFrom:
+            resourceFieldRef:
+              resource: limits.cpu
+        resources:
+          requests:
+            cpu: 0.25
+          limits:
+            cpu: 1
         volumeMounts:
         - name: storage
           mountPath: /data
